@@ -1,0 +1,15 @@
+"use server";
+
+import { cacheTag } from "next/cache";
+import { getUserbyIdtag } from "./dbcache";
+import { db } from "@/drizzle/db";
+import { eq } from "drizzle-orm";
+import { UserTable } from "@/drizzle/schema";
+
+export async function getUser(id: string) {
+  "use cache";
+  cacheTag(getUserbyIdtag(id));
+  return await db.query.UserTable.findFirst({
+    where: eq(UserTable.id, id),
+  });
+}
