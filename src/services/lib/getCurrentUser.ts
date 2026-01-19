@@ -54,8 +54,8 @@ export async function getcurrentUser({ allData = false } = {}) {
  * Fetch a user from the database by userId.
  * Result is cached and tagged for revalidation.
  */
-async function getUser(id: string) {
-  // Tell Next.js to cache this function's result
+async function getUser(id: string){
+    // Tell Next.js to cache this function's result
   "use cache";
 
   /**
