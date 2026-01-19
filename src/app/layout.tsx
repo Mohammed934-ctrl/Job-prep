@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@/services/clerk/components/clerkprovider";
 import { ThemeProvider } from "next-themes";
 import { Suspense } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <Toaster/>
           </ThemeProvider>
     </ClerkProvider>
     </Suspense>
