@@ -6,6 +6,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: z.string().min(1),
     NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: z.string().min(1),
     NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL: z.string().min(1),
+    NEXT_PUBLIC_HUME_CONFIG_ID:z.string().min(1),
   },
   emptyStringAsUndefined: true,
   experimental__runtimeEnv: {
@@ -16,5 +17,6 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL,
     NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL:
       process.env.NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL,
+      NEXT_PUBLIC_HUME_CONFIG_ID:process.env.NEXT_PUBLIC_HUME_CONFIG_ID
   },
 });

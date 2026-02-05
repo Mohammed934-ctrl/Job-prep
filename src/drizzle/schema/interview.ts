@@ -5,7 +5,7 @@ import { relations } from "drizzle-orm";
 
 export const InterviewTable = pgTable("interviews", {
   id,
-  jobInfoid: uuid()
+  jobInfoId: uuid()
     .references(() => jobInfoTable.id, { onDelete: "cascade" })
     .notNull(),
   duration: varchar().notNull(),
@@ -19,7 +19,7 @@ export const InterviewTableRelation = relations(
   InterviewTable,
   ({ one }) => ({
     jobInfo: one(jobInfoTable, {
-      fields: [InterviewTable.jobInfoid],//this the foreign key in interview table
+      fields: [InterviewTable.jobInfoId],//this the foreign key in interview table
       references: [jobInfoTable.id],//this the primary key in jonInfo table
     }),
   })

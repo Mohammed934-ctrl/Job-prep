@@ -32,7 +32,7 @@ export async function createjobInfo(unsafeData: z.infer<typeof jobInfoschema>) {
 
   const jobInfo = await InsertjobInfo({ ...data, userId });
 
-  redirect(`app/job-infos/${jobInfo.id}`);
+  redirect(`/app/job-infos/${jobInfo.id}`);
 }
 
 export async function updatejobinfo(
@@ -65,7 +65,7 @@ export async function updatejobinfo(
   }
   const jobInfo = await updatejobinfoDB(id, data);
 
-  redirect(`app/job-infos/${jobInfo.id}`);
+  redirect(`/app/job-infos/${jobInfo.id}`);
 }
 
 async function getjobInfo(id: string, userId: string) {

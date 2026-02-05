@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { PricingTable } from "@/services/clerk/components/PricingTable";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <UserButton />
         <SignInButton />
         <ThemeToggle/>
+        <PricingTable/>
       </div>
     </div>
   );
