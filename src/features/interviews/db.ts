@@ -9,7 +9,7 @@ export async function InsertInterview(
   const [newInterview] = await db
     .insert(InterviewTable)
     .values(interview)
-    .returning({ id: InterviewTable.id, jobInfoId: InterviewTable.jobInfoId});
+    .returning({ id: InterviewTable.id, jobInfoId: InterviewTable.jobinfoid});
 
   revalidateInterviewCache(newInterview);
 
@@ -24,7 +24,7 @@ export async function updateInterview(
     .update(InterviewTable)
     .set(interview)
     .where(eq(InterviewTable.id, id))
-    .returning({ id: InterviewTable.id, jobInfoId: InterviewTable.jobInfoId });
+    .returning({ id: InterviewTable.id, jobInfoId: InterviewTable.jobinfoid});
 
     revalidateInterviewCache(newInterview)
 

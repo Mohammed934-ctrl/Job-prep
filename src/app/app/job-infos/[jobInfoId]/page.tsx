@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle ,CardDescription,CardContent} from "@/compo
 import { db } from "@/drizzle/db";
 import { jobInfoTable } from "@/drizzle/schema";
 import { getjobInfoIdtag } from "@/features/jobInfos/dbcache";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { and, eq } from "drizzle-orm";
 import { ArrowRightIcon } from "lucide-react";
 import { cacheTag } from "next/cache";

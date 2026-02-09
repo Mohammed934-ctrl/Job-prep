@@ -1,5 +1,5 @@
 
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { Navbar } from "./Navbar";

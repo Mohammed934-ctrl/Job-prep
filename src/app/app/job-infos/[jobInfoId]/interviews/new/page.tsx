@@ -2,7 +2,7 @@ import { env } from "@/data/env/server";
 import { db } from "@/drizzle/db";
 import { jobInfoTable } from "@/drizzle/schema";
 import { getjobInfoIdtag } from "@/features/jobInfos/dbcache";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { and, eq } from "drizzle-orm";
 import { fetchAccessToken } from "hume"
 import { Loader2Icon } from "lucide-react";

@@ -7,7 +7,7 @@ import { eq, and } from "drizzle-orm";
 import { cacheTag } from "next/cache";
 import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { notFound } from "next/navigation";
 import { JobInform } from "@/features/jobInfos/components/jobInfoform";
 

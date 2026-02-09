@@ -4,9 +4,9 @@ import { InterviewTable } from "@/drizzle/schema";
 import { getInterviewJobInfoTag } from "@/features/interviews/dbCache";
 import { JobInfoBacklink } from "@/features/jobInfos/components/jobinfoBacklink";
 import { getjobInfoIdtag } from "@/features/jobInfos/dbcache";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
-import { ArrowRightIcon, Loader2Icon, PlusIcon } from "lucide-react";
+import { ArrowRightIcon, AwardIcon, Loader2Icon, PlusIcon } from "lucide-react";
 import { cacheTag } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -23,17 +23,17 @@ import { formatDateTime } from "@/lib/formatters";
 export default async function InterviewsPage({
   params,
 }: {
-  params: Promise<{ jobinfoId: string }>;
+  params: Promise<{ jobInfoId: string }>;
 }) {
-  const { jobinfoId } = await params;
+  const {jobInfoId} = await params
 
   return (
     <div className="container py-4 gap-4 h-screen-header flex flex-col items-start">
-      <JobInfoBacklink jobInfoId={jobinfoId} />
+      <JobInfoBacklink jobInfoId={jobInfoId} />
       <Suspense
         fallback={<Loader2Icon className="size-24 animate-spin m-auto" />}
       >
-        <SuspensePage jobInfoId={jobinfoId} />
+        <SuspensePage jobInfoId={jobInfoId} />
       </Suspense>
     </div>
   );
@@ -102,12 +102,12 @@ async function getInterview(jobInfoId: string, userId: string) {
 
   const data = await db.query.InterviewTable.findMany({
     where: and(
-      eq(InterviewTable.jobInfoId, jobInfoId),
+      eq(InterviewTable.jobinfoid, jobInfoId),
       isNotNull(InterviewTable.humechat),
     ),
     with: { jobInfo: { columns: { userId: true } } },
     orderBy: desc(InterviewTable.updatedAt),
   });
 
-  return data.filter((interview) => interview.jobInfo.userId === userId);
+  return data.filter((interview) => interview.jobInfo?.userId === userId);
 }

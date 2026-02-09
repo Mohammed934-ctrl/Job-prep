@@ -1,4 +1,4 @@
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { redirect } from "next/navigation";
 import { OnboardingClientpage } from "./client";
 

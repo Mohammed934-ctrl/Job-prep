@@ -1,7 +1,7 @@
 import { db } from "@/drizzle/db";
 import { jobInfoTable } from "@/drizzle/schema";
 import { getUserjobInfotag } from "@/features/jobInfos/dbcache";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 import { desc, eq } from "drizzle-orm";
 import { Loader2Icon, PlusIcon } from "lucide-react";
 import { cacheTag } from "next/cache";

@@ -2,7 +2,7 @@
 
 import z from "zod";
 import { jobInfoschema } from "./schema";
-import { getcurrentUser } from "@/services/lib/getCurrentUser";
+
 
 import { InsertjobInfo, updatejobinfoDB } from "./db";
 import { redirect } from "next/navigation";
@@ -11,6 +11,7 @@ import { getjobInfoIdtag } from "./dbcache";
 import { db } from "@/drizzle/db";
 import { and, eq } from "drizzle-orm";
 import { jobInfoTable } from "@/drizzle/schema";
+import { getcurrentUser } from "@/lib/getCurrentUser";
 
 export async function createjobInfo(unsafeData: z.infer<typeof jobInfoschema>) {
   const { userId } = await getcurrentUser();
