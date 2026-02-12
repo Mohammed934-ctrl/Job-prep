@@ -59,8 +59,7 @@ async function SuspensePage({ jobInfoId }: { jobInfoId: string }) {
           </Link>
         </Button>
       </div>
-      <div className="grid grid-cols-1  lg:grid-cols-2 gap-6 has-hover:*:not-hover:opacity-70">
-        <Link
+        {/* <Link
           href={`/app/job-infos/${jobInfoId}/interviews/new`}
           className="transition-opacity"
         >
@@ -70,7 +69,8 @@ async function SuspensePage({ jobInfoId }: { jobInfoId: string }) {
               New Interview
             </div>
           </Card>
-        </Link>
+        </Link> */}
+      <div className="grid grid-cols-1  lg:grid-cols-2 gap-6 has-hover:*:not-hover:opacity-70 sapce-y-6">
 
         {interviews.map((interview) => (
           <Link
@@ -91,6 +91,17 @@ async function SuspensePage({ jobInfoId }: { jobInfoId: string }) {
           </Link>
         ))}
       </div>
+       <Link
+          href={`/app/job-infos/${jobInfoId}/interviews/new`}
+          className="transition-opacity"
+        >
+          <Card className="h-full flex items-center justify-center border-dashed border-3 bg-transparent hover:border-primary/50 transition-colors shadow-none">
+            <div className="text-lg flex items-center gap-2">
+              <PlusIcon className="size-6" />
+              New Interview
+            </div>
+          </Card>
+        </Link>
     </div>
   );
 }
@@ -104,7 +115,7 @@ async function getInterview(jobInfoId: string, userId: string) {
     where: and(
       eq(InterviewTable.jobinfoid, jobInfoId),
       isNotNull(InterviewTable.humechat),
-    ),
+  ),
     with: { jobInfo: { columns: { userId: true } } },
     orderBy: desc(InterviewTable.updatedAt),
   });

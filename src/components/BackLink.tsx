@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";

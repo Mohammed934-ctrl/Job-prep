@@ -1,11 +1,11 @@
-import { BackLink } from "@/components/ui/BackLink";
-import { cn } from "@/lib/utils";
+import { BackLink } from "@/components/BackLink";
 import { cacheTag } from "next/cache";
 import { Suspense } from "react";
 import { getjobInfoIdtag } from "../dbcache";
 import { db } from "@/drizzle/db";
 import { eq } from "drizzle-orm";
 import { jobInfoTable } from "@/drizzle/schema";
+import { cn } from "@/lib/utils";
 
 export function JobInfoBacklink({
   jobInfoId,

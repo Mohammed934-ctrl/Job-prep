@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/Skeleton";
 import { SuspensedItem } from "@/components/SuspenseItem";
-import { BackLink } from "@/components/ui/BackLink";
+import { BackLink } from "@/components/BackLink";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle ,CardDescription,CardContent} from "@/components/ui/card";
 import { db } from "@/drizzle/db";
