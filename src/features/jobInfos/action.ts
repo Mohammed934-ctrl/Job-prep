@@ -3,7 +3,6 @@
 import z from "zod";
 import { jobInfoschema } from "./schema";
 
-
 import { InsertjobInfo, updatejobinfoDB } from "./db";
 import { redirect } from "next/navigation";
 import { cacheTag } from "next/cache";

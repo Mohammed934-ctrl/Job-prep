@@ -8,6 +8,7 @@ import { and, eq } from "drizzle-orm";
 import { InterviewTable, jobInfoTable } from "@/drizzle/schema";
 import { InsertInterview, updateInterview as updateInterviewDB } from "./db";
 import { getInterviewIdTag } from "./dbCache";
+import { GenerateAiInterviewFeedback } from "@/services/ai/interview";
 
 export async function createInterview({
   jobinfoid,
@@ -58,6 +59,50 @@ export async function updateInteview(
   await updateInterviewDB(id, data);
 
   return { error: false };
+}
+
+export async function GenerateInterviewFeedback(interviewId: string) {
+  const { userId, user } = await getcurrentUser({ allData: true });
+  if (userId == null || user == null) {
+    return {
+      error: true,
+      message: "You don't have permission to do this",
+    };
+  }
+
+  const interview = await getInteview(interviewId, userId);
+
+  if (interview == null) {
+    return {
+      error: true,
+      message: "You don't have permission to do this",
+    };
+  }
+  if (interview?.humechat == null) {
+    return {
+      error: true,
+      message: "Interview has not been completed yet",
+    };
+  }
+
+  const feedback = await GenerateAiInterviewFeedback({
+    humeChatId: interview.humechat,
+    jobInfo: interview.jobInfo,
+    userName: user.name,
+  });
+
+  if (feedback == null) {
+    return {
+      error: true,
+      message: "Failed to generate feedback",
+    };
+  }
+
+  await updateInterviewDB(interviewId, { feedback });
+
+  return {
+    error: false,
+  };
 }
 
 async function getjobInfo(id: string, userId: string) {

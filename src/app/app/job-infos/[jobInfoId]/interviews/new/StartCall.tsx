@@ -128,7 +128,7 @@ export default function StartCall({
   );
 }
 
-function Messages({ user }: { user: { name: string; imageUrl: string } }) {
+ function Messages({ user }: { user: { name: string; imageUrl: string } }) {
   const { messages, fft } = useVoice();
 
   const CondenseMessage = useMemo(() => {
