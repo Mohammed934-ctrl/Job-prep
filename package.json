@@ -13,8 +13,8 @@
     "db-studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@ai-sdk/google": "^3.0.29",
-    "@ai-sdk/react": "^3.0.103",
+    "@ai-sdk/google": "^1.2.22",
+    "@ai-sdk/react": "^1.2.12",
     "@arcjet/inspect": "^1.0.0-beta.17",
     "@arcjet/next": "^1.0.0-beta.17",
     "@clerk/nextjs": "^6.36.7",
@@ -27,7 +27,7 @@
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
     "@t3-oss/env-nextjs": "^0.13.10",
-    "ai": "^6.0.85",
+    "ai": "^4.3.19",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.1",
@@ -41,6 +41,7 @@
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.1",
     "react-markdown": "^10.1.0",
+    "react-resizable-panels": "^0.0.55",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.3.5"
@@ -49,7 +50,7 @@
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^20",
-    "@types/pg": "^8.16.0",
+    "@types/pg": "^8.18.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.8",

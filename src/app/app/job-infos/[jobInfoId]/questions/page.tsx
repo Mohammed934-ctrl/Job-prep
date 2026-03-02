@@ -39,10 +39,7 @@ async function SuspendedComponent({ jobInfoId }: { jobInfoId: string }) {
   const jobInfo = await getjobInfo(jobInfoId, userId);
   if (jobInfo == null) return notFound();
 
-  return (
-        <QuestionClientPage jobinfo={jobInfo}/>
-    
-  )
+  return <QuestionClientPage jobinfo={jobInfo} />;
 }
 
 async function getjobInfo(id: string, userId: string) {
@@ -53,3 +50,6 @@ async function getjobInfo(id: string, userId: string) {
     where: and(eq(jobInfoTable.id, id), eq(jobInfoTable.userId, userId)),
   });
 }
+
+
+

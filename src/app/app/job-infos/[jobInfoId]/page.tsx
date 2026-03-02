@@ -45,13 +45,13 @@ export default async function JobInfoPage({
 }) {
   const { jobInfoId } = await params;
 
-  const jobInfo = getcurrentUser().then(
+  const jobInfo =  getcurrentUser().then(
     async ({ userId, redirectToSignIn }) => {
       if (userId == null) return redirectToSignIn();
 
       const jobinfo = await getjobInfo(jobInfoId, userId);
 
-      if (jobInfo == null) return notFound();
+      if (jobinfo == null) return notFound();
 
       return jobinfo;
     },

@@ -2,11 +2,9 @@ import { db } from "@/drizzle/db";
 import { QuestionTable } from "@/drizzle/schema";
 import { revalidateQuestionCache } from "./dbCache";
 
-export async function insertQuestion({
-  question,
-}: {
-  question: typeof QuestionTable.$inferInsert;
-}) {
+export async function insertQuestion(
+  question: typeof QuestionTable.$inferInsert,
+) {
   const [newquestion] = await db
     .insert(QuestionTable)
     .values(question)
