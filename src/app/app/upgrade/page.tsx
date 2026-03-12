@@ -5,13 +5,15 @@ import { AlertTriangleIcon } from "lucide-react";
 
 export default function UpgradePage() {
   return (
-    <div className="container py-4 max-w-6xl">
-      <div className="mb-4">
+    <div className="container mx-auto py-8 max-w-6xl">
+      
+      <div className="mb-6">
         <BackLink href="/app">Dashboard</BackLink>
       </div>
 
-      <Alert variant="warning">
-        <AlertTriangleIcon />
+      <Alert variant="warning" className="mb-8">
+        <AlertTriangleIcon className="h-4 w-4" />
+
         <AlertTitle>Plan Limit Reached</AlertTitle>
 
         <AlertDescription>
@@ -19,7 +21,9 @@ export default function UpgradePage() {
           continue using all features.
         </AlertDescription>
       </Alert>
+
       <PricingTable />
+
     </div>
   );
 }

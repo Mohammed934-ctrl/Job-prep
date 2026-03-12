@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { getUser } from "@/features/user/action";
 import { Loader2 } from "lucide-react";
@@ -24,3 +24,4 @@ export function OnboardingClientpage({ userId }: { userId: string }) {
 
   return <Loader2 className="animate-spin size-24" />;
 }
+

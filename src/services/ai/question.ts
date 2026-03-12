@@ -3,8 +3,9 @@ import {
   QuestionTable,
   QuestionDifficulty,
 } from "@/drizzle/schema";
-import { google } from "@ai-sdk/google";
+
 import { streamText } from "ai";
+import { google } from "./models/google";
 
 export function GenerateAiQuestion({
   jobInfo,

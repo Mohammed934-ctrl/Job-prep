@@ -3,6 +3,10 @@ import { generateText } from "ai";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+
+console.log("KEY:", process.env.GOOGLE_GENERATIVE_AI_API_KEY);
+
+
   try {
     const { text } = await generateText({
       model: google("gemini-2.5-flash"),

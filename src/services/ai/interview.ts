@@ -1,5 +1,5 @@
 import { jobInfoTable } from "@/drizzle/schema";
-import { google } from "@ai-sdk/google";
+import { google } from "./models/google";
 import { generateText } from "ai";
 import { fetchChatMessages } from "../hume/lib/api";
 
@@ -36,7 +36,7 @@ export async function GenerateAiInterviewFeedback({
   const { text } = await generateText({
     model: google("gemini-2.5-flash"),
     prompt: `Here is the interview transcript in JSON format.
-Analyze it carefully and provide structured feedback Transcript:${JSON.stringify(formattedMessages,null,2)}`,
+Analyze it carefully and provide structured feedback Transcript:${JSON.stringify(formattedMessages, null, 2)}`,
     system: `You are an expert interview coach and evaluator. Your role is to analyze a mock job interview transcript and provide clear, detailed, and structured feedback on the interviewee's performance based on the job requirements. Your output should be in markdown format.
   
 ---

@@ -28,7 +28,7 @@ export function Navbar({ user }: { user: { name: string; imageUrl: string } }) {
         <Link href="/app" className="flex items-center gap-2">
           <BrainCircuitIcon className="size-8 text-primary" />
           <span className="text-xl font-bold bg-primary bg-clip-text text-transparent">
-            JOB-Prep
+            HireMind
           </span>
         </Link>
 

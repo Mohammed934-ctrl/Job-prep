@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { ResumeClientPage } from "./ResumeClientpage";
 
-export async function ResumePage({
+export   default async function ResumePage({
   params,
 }: {
   params: Promise<{ jobInfoId: string }>;
