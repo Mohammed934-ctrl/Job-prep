@@ -4,13 +4,14 @@ import { jobInfoTable } from "@/drizzle/schema";
 import { getjobInfoIdtag } from "@/features/jobInfos/dbcache";
 import { getcurrentUser } from "@/lib/getCurrentUser";
 import { and, eq } from "drizzle-orm";
-import { fetchAccessToken } from "hume"
+import { fetchAccessToken } from "hume";
 import { Loader2Icon } from "lucide-react";
 import { cacheTag } from "next/cache";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
-import { VoiceProvider } from "@humeai/voice-react"
+import { VoiceProvider } from "@humeai/voice-react";
 import StartCall from "./StartCall";
+import { canCreateInterview } from "@/features/interviews/permission";
 
 export default async function NewInterviewPage({
   params,
@@ -38,21 +39,19 @@ async function SuspensedComponent({ jobInfoId }: { jobInfoId: string }) {
 
   if (userId == null || user == null) return redirectToSignIn();
 
-  //Todo here will do it later
+  if (!(await canCreateInterview())) return redirect("/app/upgrade");
   const jobInfo = await getjobInfo(jobInfoId, userId);
-  if(jobInfo==null) return notFound()
+  if (jobInfo == null) return notFound();
 
-
-
-    const accessToken= await fetchAccessToken({
-        apiKey:env.HUME_API_KEY,
-        secretKey:env.HUME_SECRET_KEY
-    })
+  const accessToken = await fetchAccessToken({
+    apiKey: env.HUME_API_KEY,
+    secretKey: env.HUME_SECRET_KEY,
+  });
   return (
-     <VoiceProvider> 
-         <StartCall  jobInfo={jobInfo} user={user}  accessToken={accessToken}/>
-     </VoiceProvider>
-  )
+    <VoiceProvider>
+      <StartCall jobInfo={jobInfo} user={user} accessToken={accessToken} />
+    </VoiceProvider>
+  );
 }
 
 async function getjobInfo(id: string, userId: string) {

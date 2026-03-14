@@ -12,7 +12,6 @@ import { Loader2Icon, MicIcon, MicOffIcon, PhoneOffIcon } from "lucide-react";
 
 import { CondenseChatMessages } from "@/services/hume/lib/CondenseChatMessages";
 import { ConversationMessages } from "@/services/hume/components/ConversationMessages";
-import { validateEmail } from "@arcjet/next";
 
 export default function StartCall({
   jobInfo,
@@ -122,13 +121,13 @@ export default function StartCall({
     <div className="flex flex-col-reverse overflow-y-auto h-screen">
       <div className="container py-6 flex flex-col items-center justify-end gap-4">
         <Messages user={user} />
-        <Controls/>
+        <Controls />
       </div>
     </div>
   );
 }
 
- function Messages({ user }: { user: { name: string; imageUrl: string } }) {
+function Messages({ user }: { user: { name: string; imageUrl: string } }) {
   const { messages, fft } = useVoice();
 
   const CondenseMessage = useMemo(() => {

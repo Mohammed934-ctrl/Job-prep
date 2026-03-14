@@ -4,6 +4,7 @@ import { getcurrentUser } from "@/lib/getCurrentUser";
 import { PricingTable } from "@/services/clerk/components/PricingTable";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+
 import { Suspense } from "react";
 import {
   BookOpenCheckIcon,
@@ -14,7 +15,8 @@ import {
   Search,
   SpeechIcon,
 } from "lucide-react";
-import { Card, CardContent ,CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { UserAvatar } from "@/features/user/UserAvatar";
 
 export default function LandingPage() {
   return (
@@ -22,7 +24,11 @@ export default function LandingPage() {
       <Navbar />
       <Hero />
       <Features />
-      <DetailedFeatures/>
+      <DetailedFeatures />
+      <Stats />
+      <Testimonials />
+      <Pricing/>
+      <Footer/>
     </div>
   );
 }
@@ -34,7 +40,9 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
             <BrainCircuitIcon className="size-8 text-primary" />
-            <h1 className="text-2xl font-bold bg-primary bg-clip-text text-transparent">HireMind</h1>
+            <h1 className="text-2xl font-bold bg-primary bg-clip-text text-transparent">
+              HireMind
+            </h1>
           </div>
           <Suspense
             fallback={
@@ -114,11 +122,11 @@ function Features() {
   ];
 
   return (
-   <section className="py-20">
+    <section className="py-20">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map(feature => (
-            <Card 
+          {features.map((feature) => (
+            <Card
               key={feature.title}
               className="transition-all duration-300 transform hover:-translate-y-1"
             >
@@ -145,7 +153,7 @@ function Features() {
 
 function DetailedFeatures() {
   return (
-    <section className="py-15 bg-muted/20">
+    <section className="py-20 bg-muted/20">
       <div className="container">
         <div className="text-center mb-16">
           <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -162,7 +170,7 @@ function DetailedFeatures() {
           {/* AI Interview Practice */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex items-center  gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <SpeechIcon className="w-6 h-6 text-primary" />
                 </div>
@@ -386,10 +394,261 @@ function DetailedFeatures() {
         </div>
       </div>
     </section>
-  )
+  );
+}
+
+function Stats() {
+  const stats = [
+    {
+      value: "2.3x",
+      label: "Faster job placement",
+      description:
+        "Our users land offers in 4-6 weeks vs industry average of 12+ weeks",
+    },
+    {
+      value: "65%",
+      label: "Fewer interviews needed",
+      description:
+        "Average 3-4 interviews to land an offer vs typical 8-10 interviews",
+    },
+    {
+      value: "89%",
+      label: "Interview success rate",
+      description:
+        "Users who complete our prep program receive offers at 9/10 interviews",
+    },
+    {
+      value: "$15K+",
+      label: "Higher starting salaries",
+      description:
+        "Better negotiation skills lead to significantly higher compensation",
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-muted/20">
+      <div className="container">
+        <div className="text-center mb-16">
+          <h3 className="text-3xl sm:text-4xl font-bold mb-3">
+            Our users land jobs{" "}
+            <span className="text-primary">faster and better</span>
+          </h3>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Don&apos;t just take our word for it. See how Landr users
+            consistently outperform the competition in every metric that
+            matters.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-6 rounded-2xl bg-card/60 backdrop-blur-sm border border-border/50 hover:bg-card/80 transition-all duration-300"
+            >
+              <div className="text-4xl sm:text-5xl text-primary font-bold mb-2">
+                {stat.value}
+              </div>
+              <div className="text-lg font-semibold text-foreground mb-3">
+                {stat.label}
+              </div>
+              <div className="text-sm text-muted-foreground leading-relaxed">
+                {stat.description}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-lg text-muted-foreground mb-8 text-pretty">
+            * Based on internal data from 2,500+ successful job placements in
+            2026
+          </p>
+          <Button size="lg" className="h-12 px-6" asChild>
+            <Link href="/app">Join thousands of successful job seekers</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const testimonials = [
+    {
+      name: "Sarah Chen",
+      role: "Software Engineer",
+      company: "Google",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "HireMind completely transformed my interview preparation. The AI practice sessions felt so realistic that I walked into my Google interview feeling completely confident. Landed the offer on my first try!",
+      timeToOffer: "3 weeks",
+    },
+    {
+      name: "Marcus Rodriguez",
+      role: "Product Manager",
+      company: "Stripe",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "I was struggling with behavioral questions until I found HireMind. The AI helped me craft compelling stories and practice my delivery. Got offers from 3 different companies!",
+      timeToOffer: "5 weeks",
+    },
+    {
+      name: "Emily Park",
+      role: "Data Scientist",
+      company: "Netflix",
+      avatar:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "The resume optimization feature was a game-changer. My callback rate tripled after implementing HireMind's suggestions. Worth every penny and more.",
+      timeToOffer: "4 weeks",
+    },
+    {
+      name: "Alex Thompson",
+      role: "Frontend Developer",
+      company: "Airbnb",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "The technical question practice was incredible. I went from failing coding interviews to acing them. The AI's feedback helped me identify and fix my weak spots immediately.",
+      timeToOffer: "2 weeks",
+    },
+    {
+      name: "Priya Patel",
+      role: "UX Designer",
+      company: "Figma",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "I was career-changing into tech and felt overwhelmed. HireMind's personalized guidance gave me the confidence to pursue design roles. Now I'm living my dream at Figma!",
+      timeToOffer: "6 weeks",
+    },
+    {
+      name: "David Kim",
+      role: "DevOps Engineer",
+      company: "AWS",
+      avatar:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=face&auto=format&q=80",
+      content:
+        "The salary negotiation tips alone paid for the platform 10x over. I increased my offer by $25K just by following HireMind's guidance. Absolutely worth it!",
+      timeToOffer: "4 weeks",
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-muted-30">
+      <div className="container">
+        <div className="text-center mb-16">
+          <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-balance">
+            Success stories from{" "}
+            <span className="text-primary">real users</span>
+          </h3>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+            Join thousands of professionals who&apos;ve accelerated their
+            careers with Landr
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card
+              key={index}
+              className="relative overflow-hidden transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl h-full"
+            >
+              <CardContent className="p-6 h-full flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <UserAvatar
+                    className="size-10 shrink"
+                    user={{
+                      imageUrl: testimonial.avatar,
+                      name: testimonial.name,
+                    }}
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote className="text-muted-foreground leading-relaxed mb-4 italic grow">
+                  &quot;{testimonial.content}&quot;
+                </blockquote>
+
+                <div className="flex items-center justify-between">
+                  <div className="text-sm font-medium text-primary">
+                    @{testimonial.company}
+                  </div>
+                  <div className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded-full">
+                    Hired in {testimonial.timeToOffer}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground text-lg mb-6">
+            Ready to write your own success story?
+          </p>
+          <Button size="lg" className="h-12 px-8" asChild>
+            <Link href="/app">Start Your Journey Today</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 
 
 
 
+function Pricing() {
+  return (
+    <section className="py-24 bg-muted/20">
+      <div className="container">
+        <div className="text-center mb-16">
+          <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-balance">
+            Choose your{" "}
+            <span className="text-primary">career acceleration</span> plan
+          </h3>
+
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Invest in your future with flexible pricing options designed to fit
+            your career goals and budget
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          <PricingTable />
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-lg text-muted-foreground">
+            All plans include a 7-day refund period. Cancel anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="py-6 bg-card border-t border-border">
+      <div className="container">
+        <div className="text-center">
+          <p className="text-muted-foreground">
+            Empowering your career journey with AI-powered job preparation
+            tools.
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}
